@@ -1,0 +1,8 @@
+.taskList {
+  border-top: 1px solid var(--gray-400);
+  height: 244px;
+}
+
+.emptyTasksText {
+  margin-top: 1rem;
+}

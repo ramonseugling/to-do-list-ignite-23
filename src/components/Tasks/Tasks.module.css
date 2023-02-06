@@ -1,8 +1,9 @@
 main {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 736px;
 }
 
 form {
@@ -10,10 +11,12 @@ form {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 736px;
+  width: 100%;
+  margin-bottom: 70px;
+  margin-top: -2rem;
 }
 
-input {
+.addTaskInput {
   flex: 1;
   border-radius: 8px;
   padding: 1rem;
@@ -21,7 +24,7 @@ input {
   border: 1px solid var(--gray-700);
 }
 
-button {
+.addTaskButton {
   padding: 16px;
   background-color: var(--blue-700);
   border-radius: 8px;
@@ -31,4 +34,11 @@ button {
   justify-content: center;
   align-items: center;
   font-weight: 700;
+}
+
+.tasksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

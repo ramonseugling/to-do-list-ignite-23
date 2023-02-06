@@ -1,8 +1,7 @@
-.header {
-  background-color: var(--gray-700);
-  height: 200px;
+div {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 }

@@ -1,12 +1,15 @@
 import Header from "./components/Header";
 import "./global.css";
-import Tasks from "./components/Tasks";
+import Tasks from "./components/Tasks/Tasks";
+import styles from "./App.module.css";
 
 function App() {
   return (
     <>
-      <Header />
-      <Tasks />
+      <div className={styles.main}>
+        <Header />
+        <Tasks />
+      </div>
     </>
   );
 }

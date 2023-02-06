@@ -1,5 +1,6 @@
 import { PlusCircle } from "phosphor-react";
 import { ChangeEvent, FormEvent, useState } from "react";
+import TaskList from "./TaskList/TaskList";
 import styles from "./Tasks.module.css";
 
 function Tasks() {
@@ -20,17 +21,19 @@ function Tasks() {
     <main className={styles.main}>
       <form onSubmit={handleAddNewTask} className={styles.form}>
         <input
+          className={styles.addTaskInput}
           placeholder="Adicione uma nova tarefa"
           onChange={handleNewTaskChange}
         />
-        <button type="submit">
+        <button type="submit" className={styles.addTaskButton}>
           Criar
           <PlusCircle size={20} />
         </button>
-        {tasks.map((task) => (
-          <span>{task}</span>
-        ))}
       </form>
+
+      <div className={styles.tasksContainer}>
+        <TaskList tasks={tasks} />
+      </div>
     </main>
   );
 }
