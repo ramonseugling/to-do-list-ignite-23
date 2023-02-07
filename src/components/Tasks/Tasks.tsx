@@ -10,11 +10,20 @@ function Tasks() {
   function handleAddNewTask(event: FormEvent) {
     event.preventDefault();
     setTasks([...tasks, task]);
+    setTask("");
   }
 
   function handleNewTaskChange(e: ChangeEvent<HTMLInputElement>) {
     e.target.setCustomValidity("");
     setTask(e.target.value);
+  }
+
+  function onRemoveTask(content: string) {
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      return task !== content;
+    });
+
+    setTasks(tasksWithoutDeletedOne);
   }
 
   return (
@@ -24,6 +33,7 @@ function Tasks() {
           className={styles.addTaskInput}
           placeholder="Adicione uma nova tarefa"
           onChange={handleNewTaskChange}
+          value={task}
         />
         <button type="submit" className={styles.addTaskButton}>
           Criar
@@ -32,7 +42,7 @@ function Tasks() {
       </form>
 
       <div className={styles.tasksContainer}>
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} onRemoveTask={onRemoveTask} />
       </div>
     </main>
   );

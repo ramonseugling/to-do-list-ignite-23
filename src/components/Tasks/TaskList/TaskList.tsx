@@ -1,27 +1,21 @@
+import Header from "./Header/Header";
 import Empty from "./Empty/Empty";
 import Task from "./Task/Task";
 import styles from "./TaskList.module.css";
 
 interface TasksListProps {
   tasks: string[];
+  onRemoveTask: (content: string) => void;
 }
 
-function TaskList({ tasks }: TasksListProps) {
+function TaskList({ tasks, onRemoveTask }: TasksListProps) {
   return (
     <main className={styles.taskListContainer}>
-      <header className={styles.header}>
-        <span>
-          Tarefas criadas <span>0</span>
-        </span>
-        <span>
-          Concluídas <span>0</span>
-        </span>
-      </header>
-
+      <Header createdTasksTotal={3} doneTasksTotal={2} />
       {tasks.length === 0 ? (
         <Empty />
       ) : (
-        tasks.map((task) => <Task task={task} />)
+        tasks.map((task) => <Task content={task} onRemoveTask={onRemoveTask} />)
       )}
     </main>
   );
