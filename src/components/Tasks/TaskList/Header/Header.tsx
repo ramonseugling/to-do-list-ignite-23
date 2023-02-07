@@ -1,11 +1,27 @@
+import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
-
+interface ITask {
+  content: string;
+  isDone: boolean;
+}
 interface HeaderProps {
-  createdTasksTotal: number;
-  doneTasksTotal: number;
+  tasks: ITask[];
 }
 
-function Header({ createdTasksTotal, doneTasksTotal }: HeaderProps) {
+function Header({ tasks }: HeaderProps) {
+  const [createdTasksTotal, setCreatedTasksTotal] = useState(0);
+  const [doneTasksTotal, setDoneTasksTotal] = useState(0);
+
+  useEffect(() => {
+    setCreatedTasksTotal(tasks.length);
+  }, [tasks]);
+
+  useEffect(() => {
+    setDoneTasksTotal(
+      tasks.reduce((acc, task) => acc + (task.isDone === true ? 1 : 0), 0)
+    );
+  }, [tasks]);
+
   return (
     <header className={styles.header}>
       <span className={styles.createdTasks}>

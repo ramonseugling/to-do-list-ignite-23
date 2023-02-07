@@ -5,7 +5,6 @@
   background-color: var(--gray-500);
   border: 1px solid var(--gray-400);
   border-radius: 8px;
-  color: var(--gray-100);
   font-size: 0.875rem;
 
   display: flex;
@@ -13,4 +12,34 @@
   justify-content: start;
   align-items: flex-start;
   gap: 1rem;
+}
+
+.isDoneButton {
+  background-color: transparent;
+  border: none;
+}
+
+.isDoneCheckedButton {
+  color: var(--blue-500);
+  border: none;
+}
+
+.isDoneNotCheckedButton {
+  color: var(--purple-700);
+  border: none;
+}
+
+.deleteButton {
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+}
+
+.taskIsDoneContent {
+  text-decoration-line: line-through;
+  color: var(--gray-300);
+}
+
+.taskIsNotDoneContent {
+  color: var(--gray-100);
 }

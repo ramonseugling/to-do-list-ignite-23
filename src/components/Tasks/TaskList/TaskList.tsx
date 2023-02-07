@@ -3,19 +3,31 @@ import Empty from "./Empty/Empty";
 import Task from "./Task/Task";
 import styles from "./TaskList.module.css";
 
+interface ITask {
+  content: string;
+  isDone: boolean;
+}
 interface TasksListProps {
-  tasks: string[];
+  tasks: ITask[];
   onRemoveTask: (content: string) => void;
+  onChangeTaskIsDone: (content: string, isDone: boolean) => void;
 }
 
-function TaskList({ tasks, onRemoveTask }: TasksListProps) {
+function TaskList({ tasks, onRemoveTask, onChangeTaskIsDone }: TasksListProps) {
   return (
     <main className={styles.taskListContainer}>
-      <Header createdTasksTotal={3} doneTasksTotal={2} />
+      <Header tasks={tasks} />
       {tasks.length === 0 ? (
         <Empty />
       ) : (
-        tasks.map((task) => <Task content={task} onRemoveTask={onRemoveTask} />)
+        tasks.map((task) => (
+          <Task
+            key={task.content}
+            content={task.content}
+            onRemoveTask={onRemoveTask}
+            onChangeTaskIsDone={onChangeTaskIsDone}
+          />
+        ))
       )}
     </main>
   );
